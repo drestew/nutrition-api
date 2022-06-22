@@ -42,6 +42,6 @@ app.get('/api/:food', (req, res) => {
     res.json(food)
 })
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
     console.log(`server now running on port ${PORT}`)
 })
