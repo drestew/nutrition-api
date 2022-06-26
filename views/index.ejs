@@ -5,7 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nutrition Facts</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudfare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/f11c1b3bbe.js"
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="js/main.js"></script>
   </head>
   <body>
     <h1>Recipe Nutrition</h1>
@@ -22,7 +31,11 @@
     <% for(let i=0; i < info.length; i++) {%>
     <h3><%= info[i].name %></h3>
     <ul class="food-item">
-      <li class="likes">likes - <%= info[i].likes %></li>
+      <li class="likes">
+        likes - <span><%= info[i].likes %></span>
+        <span class="fa-solid fa-thumbs-up"></span
+        ><span class="fa-solid fa-trash-can"></span>
+      </li>
       <li class="nutrition">
         calories - <%= info[i].calories %>, protein - <%= info[i].protein %>,
         carbs - <%= info[i].carbs %>, fat - <%= info[i].fat %>
