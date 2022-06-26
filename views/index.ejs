@@ -9,13 +9,25 @@
   </head>
   <body>
     <h1>Recipe Nutrition</h1>
+    <h2>Add Food</h2>
+    <form action="/addFood" method="POST">
+      <input type="text" placeholder="name" name="name" />
+      <input type="text" placeholder="calories" name="calories" />
+      <input type="text" placeholder="protein" name="protein" />
+      <input type="text" placeholder="carbs" name="carbs" />
+      <input type="text" placeholder="fat" name="fat" />
+      <input type="submit" />
+    </form>
     <h2 class="food-items">Food Items</h2>
     <% for(let i=0; i < info.length; i++) {%>
     <h3><%= info[i].name %></h3>
     <ul class="food-item">
-      <li class="nutrition"><%= info[i].calories %></li>
+      <li class="likes">likes - <%= info[i].likes %></li>
+      <li class="nutrition">
+        calories - <%= info[i].calories %>, protein - <%= info[i].protein %>,
+        carbs - <%= info[i].carbs %>, fat - <%= info[i].fat %>
+      </li>
     </ul>
     <% } %>
-    <button class="submit">Submit</button>
   </body>
 </html>

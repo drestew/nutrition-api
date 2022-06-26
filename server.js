@@ -1,4 +1,3 @@
-const { response, request } = require('express')
 const express = require('express')
 const app = express()
 const PORT = 8000
@@ -22,15 +21,15 @@ app.use(express.json())
 
 
 app.get('/', (req, res) => {
-    db.collection('nutrition-facts').find().sort({ likes: -1 }).toArray()
+    db.collection('food-items').find().sort({ likes: -1 }).toArray()
         .then(data => {
-            response.render('index.ejs', { info: data })
+            res.render('index.ejs', { info: data })
         })
         .catch(error => console.error(error))
 })
 
 app.post('/addFood', (req, res) => {
-    db.collection('nutrition-facts').insertOne({
+    db.collection('food-items').insertOne({
         name: req.body.name,
         calories: req.body.calories,
         protein: req.body.protein,
