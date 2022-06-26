@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nutrition Facts</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Recipe Nutrition</h1>
+    <h2 class="food-items">Food Items</h2>
+    <% for(let i=0; i < info.length; i++) {%>
+    <h3><%= info[i].name %></h3>
+    <ul class="food-item">
+      <li class="nutrition"><%= info[i].calories %></li>
+    </ul>
+    <% } %>
+    <button class="submit">Submit</button>
+  </body>
+</html>
