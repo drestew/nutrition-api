@@ -1,3 +1,4 @@
+const { request } = require('express')
 const express = require('express')
 const app = express()
 const PORT = 8000
@@ -38,6 +39,21 @@ app.post('/addFood', (req, res) => {
         likes: 0,
     })
         .then(res.redirect('/'))
+})
+
+app.put('/addOneLike', (req, res) => {
+    db.collection('food-items').updateOne({ name: req.body.name }, {
+        $set: {
+            likes: req.body.likes + 1
+        }
+    }, {
+        sort: { _id: -1 }, // if multiple in db, sort in desc. order and update first one
+        upsert: false // create document if it doesn't exist (if set to true)
+    })
+        .then(results => {
+            res.json('Like Added!')
+        })
+        .catch(error => console.error(error))
 })
 
 app.listen(process.env.PORT || PORT, () => {
