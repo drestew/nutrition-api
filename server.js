@@ -10,7 +10,6 @@ let db,
 
 MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
     .then(client => {
-        console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
     })
 
@@ -60,6 +59,4 @@ app.delete('/deleteFood', (req, res) => {
         .catch(error => console.error(error))
 })
 
-app.listen(process.env.PORT, () => {
-    console.log(`server now running on port ${PORT}`)
-})
+app.listen(process.env.PORT || PORT)
