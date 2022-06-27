@@ -52,14 +52,14 @@ app.put('/addOneLike', (req, res) => {
         .catch(error => console.error(error))
 })
 
-app.listen(process.env.PORT || PORT, () => {
-    console.log(`server now running on port ${PORT}`)
-})
-
 app.delete('/deleteFood', (req, res) => {
     db.collection('food-items').deleteOne({ name: req.body.name })
         .then(result => {
             res.json('Item Deleted!')
         })
         .catch(error => console.error(error))
+})
+
+app.listen(process.env.PORT, () => {
+    console.log(`server now running on port ${PORT}`)
 })
