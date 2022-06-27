@@ -45,9 +45,6 @@ app.put('/addOneLike', (req, res) => {
         $set: {
             likes: req.body.likes + 1
         }
-    }, {
-        // sort: { _id: -1 }, // if multiple in db, sort in desc. order and update first one
-        // upsert: false // create document if it doesn't exist (if set to true)
     })
         .then(results => {
             res.json('Like Added!')
@@ -57,4 +54,12 @@ app.put('/addOneLike', (req, res) => {
 
 app.listen(process.env.PORT || PORT, () => {
     console.log(`server now running on port ${PORT}`)
+})
+
+app.delete('/deleteFood', (req, res) => {
+    db.collection('food-items').deleteOne({ name: req.body.name })
+        .then(result => {
+            res.json('Item Deleted!')
+        })
+        .catch(error => console.error(error))
 })
